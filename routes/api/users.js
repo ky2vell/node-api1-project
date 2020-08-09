@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   }
 });
 
-// Get single member
+// Get single user
 router.get('/:id', (req, res) => {
   const found = users.some(user => user.id === parseInt(req.params.id));
 
@@ -74,11 +74,9 @@ router.put('/:id', (req, res) => {
         }
       });
     } else {
-      res
-        .status(404)
-        .json({
-          message: `The user with the specified ID ${req.params.id} does not exist.`
-        });
+      res.status(404).json({
+        message: `The user with the specified ID ${req.params.id} does not exist.`
+      });
     }
   } catch (err) {
     res.status(500).json({
